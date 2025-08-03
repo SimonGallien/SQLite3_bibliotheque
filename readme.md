@@ -35,5 +35,5 @@ pyenv local
 # 3. Installer les dépendances avec Poetry
 poetry install
 
-# 4. Entrer dans l’environnement virtuel
-poetry shell
+# 4. Démarrer le programme dans l’environnement virtuel
+poetry run python main.py
