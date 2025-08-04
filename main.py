@@ -6,7 +6,12 @@ if __name__ == "__main__":
     create_tables()
     insert_data()
 
-    livres = get_livres_disponibles()
+    livresDiponible = get_livres_disponibles()
     print("\n📚 Livres disponibles :")
-    for livre in livres:
-        print("-", livre[0])
+    for livre in livresDiponible:
+        print(f"- {livre[0]}")
+
+    livresTrie = get_livres_by_date()
+    print("\n📅 Livres triés par date de publication :")
+    for titre, date in livresTrie:
+        print(f"- {titre} ({date})")
