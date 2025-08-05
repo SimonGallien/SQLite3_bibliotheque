@@ -17,6 +17,6 @@ if __name__ == "__main__":
         print(f"- {titre} ({date})")
 
     livreEmprunte = get_livres_empruntes_en_cours()
-    print("\n📚 Livres emprunté en cours :")
+    print("\n📚 Livres en cours d'emprunt :")
     for livre, dateRetourEffective in livreEmprunte:
         print(f"- {livre} - {dateRetourEffective}")
