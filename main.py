@@ -20,3 +20,22 @@ if __name__ == "__main__":
     print("\n📚 Livres en cours d'emprunt :")
     for livre, dateRetourEffective in livreEmprunte:
         print(f"- {livre} - {dateRetourEffective}")
+
+    dureeEmprunt = calcul_duree_emprunt()
+    print("\n📅 Durée d'emprunts des livres rendus :")
+    print(
+        f"{'ID':<4} | {'Livre':<6} | {'Emprunteur':<12} | {'Début':<12} | {'Retour':<12} | {'Durée (j)':<10}"
+    )
+    print("-" * 72)
+
+    for (
+        EmpruntID,
+        LivreID,
+        EmprunteurID,
+        DateEmprunt,
+        DateRetourEffective,
+        dureeEmprunt,
+    ) in dureeEmprunt:
+        print(
+            f"{EmpruntID:<4} | {LivreID:<6} | {EmprunteurID:<12} | {DateEmprunt:<12} | {DateRetourEffective:<12} | {dureeEmprunt:<10.0f}"
+        )

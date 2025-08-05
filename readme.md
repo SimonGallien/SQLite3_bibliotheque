@@ -14,7 +14,8 @@ Il permet d’explorer les bases de la manipulation de données relationnelles e
 - Requêtes SQL prêtes à l’emploi :
   - `get_livres_disponibles()` → récupère tous les livres disponibles
   - `get_livres_by_date()` → récupère les livres et les trie par date de publication, du plus ancien au plus récent.
-  - `get_livres_empruntes_en_cours` → récupère les livres en cours d'emprunt
+  - `get_livres_empruntes_en_cours()` → récupère les livres en cours d'emprunt
+  - `calcul_duree_emprunt() ` →  retourne la durée (en jours) des emprunts terminés, calculée à partir des dates d'emprunt et de retour effectif
 
 ---
 
