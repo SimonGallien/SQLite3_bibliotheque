@@ -33,5 +33,25 @@ def get_livres_by_date():
 
     livres = cursor.fetchall()
     conn.close()
-    print("Livres trié par date de publication récupérés et connexion fermée")
+    print("Livres trié par date de publication récupérés et connexion fermée.")
+    return livres
+
+
+def get_livres_empruntes_en_cours():
+    conn = sqlite3.connect("bibliotheque.db")
+    cursor = conn.cursor()
+
+    print("Connexion à la database réussi.")
+
+    cursor.execute(
+        """
+        SELECT Livres.Titre, Emprunts.DateRetourEffective FROM Livres
+        INNER JOIN Emprunts ON Livres.LivreID = Emprunts.LivreID
+        WHERE Emprunts.DateRetourEffective IS NULL
+        """
+    )
+
+    livres = cursor.fetchall()
+    conn.close()
+    print("Livres en cours d'emprunt récupérés et connexion fermée.")
     return livres

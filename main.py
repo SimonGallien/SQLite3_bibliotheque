@@ -15,3 +15,8 @@ if __name__ == "__main__":
     print("\n📅 Livres triés par date de publication :")
     for titre, date in livresTrie:
         print(f"- {titre} ({date})")
+
+    livreEmprunte = get_livres_empruntes_en_cours()
+    print("\n📚 Livres emprunté en cours :")
+    for livre, dateRetourEffective in livreEmprunte:
+        print(f"- {livre} - {dateRetourEffective}")
