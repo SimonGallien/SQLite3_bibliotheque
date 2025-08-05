@@ -39,3 +39,10 @@ if __name__ == "__main__":
         print(
             f"{EmpruntID:<4} | {LivreID:<6} | {EmprunteurID:<12} | {DateEmprunt:<12} | {DateRetourEffective:<12} | {dureeEmprunt:<10.0f}"
         )
+
+    LivresAuteurs = get_livres_auteurs()
+    print("\n📖 Livres avec leurs Auteurs :")
+    print(f"{'Livre':<35} | {'Nom'} et {'Prénom de l\'auteur'}")
+    print("-" * 64)
+    for livre, nomAuteur, prenomAuteur in LivresAuteurs:
+        print(f"{livre:<35} | {prenomAuteur} {nomAuteur}")

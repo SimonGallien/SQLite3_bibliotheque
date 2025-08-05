@@ -75,3 +75,20 @@ def calcul_duree_emprunt():
     conn.close()
     print("Durées d’emprunt récupérées et connexion fermée.")
     return emprunts
+
+
+def get_livres_auteurs():
+    conn = sqlite3.connect("bibliotheque.db")
+    cursor = conn.cursor()
+    print("Connexion à la database réussi.")
+
+    cursor.execute(
+        """
+        SELECT Livres.Titre, Auteurs.Nom, Auteurs.Prénom FROM Livres
+        LEFT JOIN Auteurs ON Livres.AuteurID = Auteurs.AuteurID
+        """
+    )
+    livres = cursor.fetchall()
+    conn.close()
+    print(f"Livres et leurs auteurs récupérés et connexion fermée.")
+    return livres
