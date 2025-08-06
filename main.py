@@ -80,3 +80,10 @@ if __name__ == "__main__":
     for nom, prenom, titre, genre in historiqueEmprunt:
         titre_str = f"{titre}" if titre is not None else "Aucun"
         print(f"{prenom:<10} | {nom:<10} | {titre_str:<32} | {genre}")
+
+    top3 = get_top3_livre()
+    print("\n🏆 Top 3 des livres les plus empruntés :")
+    print(f"{'Titre':<35} | {'Nombre d\'emprunts'}")
+    print("-" * 50)
+    for titre, count in top3:
+        print(f"{titre:<35} | {count}")

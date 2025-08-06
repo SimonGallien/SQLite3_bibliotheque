@@ -155,3 +155,23 @@ def get_emprunteurs_livres_et_genres():
     conn.close()
     print("Données emprunteurs/livres/genres récupérées avec succès.")
     return resultat
+
+
+def get_top3_livre():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT 
+            Livres.Titre, 
+            COUNT(Emprunts.LivreID) AS nbrEmprunt 
+            FROM Livres
+        INNER JOIN Emprunts ON Emprunts.LivreID = Livres.LivreID
+        GROUP BY Emprunts.LivreID
+        ORDER BY nbrEmprunt DESC
+        LIMIT 3
+        """
+    )
+    resultat = cursor.fetchall()
+    conn.close()
+    print("Top 3 des livres les plus empruntés récupéré et connexion fermée.")
+    return resultat
