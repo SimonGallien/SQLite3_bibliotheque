@@ -113,3 +113,24 @@ def get_nbr_livres_par_genre():
     conn.close()
     print("Nombre de livres par Genre récupéré et connexion fermée.")
     return livres
+
+
+def get_duree_moy_emprunt():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT 
+            Emprunteurs.Nom, 
+            Emprunteurs.Prénom, 
+            AVG(JULIANDAY(Emprunts.DateRetourEffective)-JULIANDAY(Emprunts.DateEmprunt)) AS DureeMoyenne
+        FROM Emprunteurs
+        LEFT JOIN Emprunts ON Emprunteurs.EmprunteurID = Emprunts.EmprunteurID
+        GROUP BY Emprunteurs.EmprunteurID
+        """
+    )
+    dureeMoyenne = cursor.fetchall()
+    conn.close
+    print(
+        "Durée moyenne d'emprunt par emprunteurs récupérée et connexion fermée."
+    )
+    return dureeMoyenne

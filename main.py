@@ -63,3 +63,10 @@ if __name__ == "__main__":
     print("-" * 37)
     for genre, nbrLivre in nbrLivresParGenre:
         print(f"{genre:<18} | {nbrLivre:<6}")
+
+    dureeMoyenneEmprunt = get_duree_moy_emprunt()
+    print("\n🕰️ Durée moyenne d'emprunt par emprunteurs :")
+    print(f"{'Prénom':<10} | {'Nom':<10} | Durée moyenne d'emprunt (jour)")
+    print("-" * 45)
+    for nom, prenom, duree in dureeMoyenneEmprunt:
+        print(f"{prenom:<10} | {nom:<10} | {duree}")
