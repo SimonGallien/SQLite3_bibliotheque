@@ -1,11 +1,17 @@
 import sqlite3
 
+DATABASE = "bibliotheque.db"
 
-def get_livres_disponibles():
-    conn = sqlite3.connect("bibliotheque.db")
+
+def connexion_database():
+    conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     print("Connexion à la base de données réussie")
+    return conn, cursor
 
+
+def get_livres_disponibles():
+    conn, cursor = connexion_database()
     cursor.execute(
         """
         SELECT Titre FROM Livres
@@ -13,24 +19,19 @@ def get_livres_disponibles():
         """
     )
     livres = cursor.fetchall()
-
     conn.close()
     print("Livres disponibles récupérés et connexion fermée")
     return livres
 
 
 def get_livres_by_date():
-    conn = sqlite3.connect("bibliotheque.db")
-    cursor = conn.cursor()
-    print("Connexion à la base de données réussie")
-
+    conn, cursor = connexion_database()
     cursor.execute(
         """
         SELECT Titre, DatePublication FROM Livres
         ORDER BY DatePublication ASC
         """
     )
-
     livres = cursor.fetchall()
     conn.close()
     print("Livres trié par date de publication récupérés et connexion fermée.")
@@ -38,11 +39,7 @@ def get_livres_by_date():
 
 
 def get_livres_empruntes_en_cours():
-    conn = sqlite3.connect("bibliotheque.db")
-    cursor = conn.cursor()
-
-    print("Connexion à la database réussi.")
-
+    conn, cursor = connexion_database()
     cursor.execute(
         """
         SELECT Livres.Titre, Emprunts.DateRetourEffective FROM Livres
@@ -50,7 +47,6 @@ def get_livres_empruntes_en_cours():
         WHERE Emprunts.DateRetourEffective IS NULL
         """
     )
-
     livres = cursor.fetchall()
     conn.close()
     print("Livres en cours d'emprunt récupérés et connexion fermée.")
@@ -58,10 +54,7 @@ def get_livres_empruntes_en_cours():
 
 
 def calcul_duree_emprunt():
-    conn = sqlite3.connect("bibliotheque.db")
-    cursor = conn.cursor()
-    print("Connexion à la database réussi.")
-
+    conn, cursor = connexion_database()
     cursor.execute(
         """
         SELECT EmpruntID, LivreID, EmprunteurID, DateEmprunt, DateRetourEffective,
@@ -70,7 +63,6 @@ def calcul_duree_emprunt():
         WHERE DateRetourEffective IS NOT NULL
         """
     )
-
     emprunts = cursor.fetchall()
     conn.close()
     print("Durées d’emprunt récupérées et connexion fermée.")
@@ -78,10 +70,7 @@ def calcul_duree_emprunt():
 
 
 def get_livres_auteurs():
-    conn = sqlite3.connect("bibliotheque.db")
-    cursor = conn.cursor()
-    print("Connexion à la database réussi.")
-
+    conn, cursor = connexion_database()
     cursor.execute(
         """
         SELECT Livres.Titre, Auteurs.Nom, Auteurs.Prénom FROM Livres
@@ -95,10 +84,7 @@ def get_livres_auteurs():
 
 
 def get_emprunteurs_livres_non_rendus():
-    conn = sqlite3.connect("bibliotheque.db")
-    cursor = conn.cursor()
-    print("Connexion à la database réussi.")
-
+    conn, cursor = connexion_database()
     cursor.execute(
         """
         SELECT DISTINCT Emprunteurs.Nom, Emprunteurs.Prénom, Emprunteurs.Email FROM Emprunteurs
@@ -106,7 +92,6 @@ def get_emprunteurs_livres_non_rendus():
         WHERE Emprunts.DateRetourEffective IS NULL
         """
     )
-
     emprunteurs = cursor.fetchall()
     conn.close()
     print("Emprunteurs avec livres non rendus récupérés et connexion fermée.")
