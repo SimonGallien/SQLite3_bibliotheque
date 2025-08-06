@@ -195,3 +195,19 @@ def get_nombre_emprunts_par_emprunteur():
         "Nombre total de livres empruntés par chaque emprunteur récupéré et connexion fermée."
     )
     return resultat
+
+
+def get_livres_jamais_empruntes():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT Livres.Titre
+        FROM Livres
+        LEFT JOIN Emprunts ON Emprunts.LivreID = Livres.LivreID
+        WHERE Emprunts.LivreID IS NULL
+        """
+    )
+    resultat = cursor.fetchall()
+    conn.close()
+    print("Livres jamais empruntés récupérés et connexion fermée.")
+    return resultat

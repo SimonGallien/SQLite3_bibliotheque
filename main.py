@@ -94,3 +94,8 @@ if __name__ == "__main__":
     print("-" * 42)
     for prenom, nom, nbrEmprunt in nbrLivreParEmprunteur:
         print(f"{prenom:<12} | {nom:<12} | {nbrEmprunt}")
+
+    livresJamaisEmpruntés = get_livres_jamais_empruntes()
+    print("\n📖 Livres jamais empruntés :")
+    for livre in livresJamaisEmpruntés:
+        print(f"- {livre[0]}")
