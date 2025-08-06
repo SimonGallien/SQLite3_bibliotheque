@@ -21,6 +21,7 @@ Il permet d’explorer les bases de la manipulation de données relationnelles e
   - `get_nbr_livres_par_genre` → retourne le nombre de livre(s) par genre
   - `get_duree_moy_emprunt` → retourne la durée moyenne des emprunts (en jours) pour chaque emprunteur, y compris ceux qui n’ont encore rendu aucun livre.
   - `get_emprunteurs_livres_et_genres` → Affiche le nom et prénom de chaque emprunteur, le titre du livre emprunté et le genre de ce livre.
+  - `get_top3_livre()` → retourne les trois livres les plus empruntés, avec leur titre et le nombre total d’emprunts.
 
 ---
 
