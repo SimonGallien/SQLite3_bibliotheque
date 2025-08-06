@@ -96,3 +96,20 @@ def get_emprunteurs_livres_non_rendus():
     conn.close()
     print("Emprunteurs avec livres non rendus récupérés et connexion fermée.")
     return emprunteurs
+
+
+def get_nbr_livres_par_genre():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT Genres.NomGenre, COUNT(Livres.LivreID) as NombreLivres
+        FROM Genres
+        LEFT JOIN Livres ON Genres.GenreID = Livres.GenreID
+        GROUP BY Genres.GenreID
+        ORDER BY NombreLivres DESC
+        """
+    )
+    livres = cursor.fetchall()
+    conn.close()
+    print("Nombre de livres par Genre récupéré et connexion fermée.")
+    return livres

@@ -18,6 +18,7 @@ Il permet d’explorer les bases de la manipulation de données relationnelles e
   - `calcul_duree_emprunt() ` →  retourne la durée (en jours) des emprunts terminés, calculée à partir des dates d'emprunt et de retour effectif
   - `get_livres_auteurs()`  → retourne tous les titres de livres et le nom et prénom de l'auteur associé
   - `get_emprunteurs_livres_non_rendus ` → retourne le nom, prénom et email des emprunteurs n'ayant pas encore leur(s) livre(s)
+  - `get_nbr_livres_par_genre` → retourne le nombre de livre(s) par genre
 
 ---
 

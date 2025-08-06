@@ -56,3 +56,10 @@ if __name__ == "__main__":
 
     for prenom, nom, email in emprunteursLivresNonRendu:
         print(f"{prenom:<15} | {nom:<15} | {email}")
+
+    nbrLivresParGenre = get_nbr_livres_par_genre()
+    print("\n📖 Nombre de livres par genre :")
+    print(f"{'Genre':<18} | {'Nbr de livre(s)':<6}")
+    print("-" * 37)
+    for genre, nbrLivre in nbrLivresParGenre:
+        print(f"{genre:<18} | {nbrLivre:<6}")
