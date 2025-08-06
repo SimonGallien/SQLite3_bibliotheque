@@ -17,6 +17,7 @@ Il permet d’explorer les bases de la manipulation de données relationnelles e
   - `get_livres_empruntes_en_cours()` → récupère les livres en cours d'emprunt
   - `calcul_duree_emprunt() ` →  retourne la durée (en jours) des emprunts terminés, calculée à partir des dates d'emprunt et de retour effectif
   - `get_livres_auteurs()`  → retourne tous les titres de livres et le nom et prénom de l'auteur associé
+  - `get_emprunteurs_livres_non_rendus ` → retourne le nom, prénom et email des emprunteurs n'ayant pas encore leur(s) livre(s)
 
 ---
 

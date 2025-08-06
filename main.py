@@ -46,3 +46,13 @@ if __name__ == "__main__":
     print("-" * 64)
     for livre, nomAuteur, prenomAuteur in LivresAuteurs:
         print(f"{livre:<35} | {prenomAuteur} {nomAuteur}")
+
+    emprunteursLivresNonRendu = get_emprunteurs_livres_non_rendus()
+    emprunteursLivresNonRendu = get_emprunteurs_livres_non_rendus()
+
+    print("\n👤 Emprunteurs n'ayant pas encore rendu leur livre :")
+    print(f"{'Prénom':<15} | {'Nom':<15} | {'Email'}")
+    print("-" * 55)
+
+    for prenom, nom, email in emprunteursLivresNonRendu:
+        print(f"{prenom:<15} | {nom:<15} | {email}")

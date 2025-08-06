@@ -92,3 +92,22 @@ def get_livres_auteurs():
     conn.close()
     print(f"Livres et leurs auteurs récupérés et connexion fermée.")
     return livres
+
+
+def get_emprunteurs_livres_non_rendus():
+    conn = sqlite3.connect("bibliotheque.db")
+    cursor = conn.cursor()
+    print("Connexion à la database réussi.")
+
+    cursor.execute(
+        """
+        SELECT DISTINCT Emprunteurs.Nom, Emprunteurs.Prénom, Emprunteurs.Email FROM Emprunteurs
+        JOIN Emprunts ON Emprunteurs.EmprunteurID = Emprunts.EmprunteurID
+        WHERE Emprunts.DateRetourEffective IS NULL
+        """
+    )
+
+    emprunteurs = cursor.fetchall()
+    conn.close()
+    print("Emprunteurs avec livres non rendus récupérés et connexion fermée.")
+    return emprunteurs
