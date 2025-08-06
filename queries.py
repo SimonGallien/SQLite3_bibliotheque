@@ -134,3 +134,24 @@ def get_duree_moy_emprunt():
         "Durée moyenne d'emprunt par emprunteurs récupérée et connexion fermée."
     )
     return dureeMoyenne
+
+
+def get_emprunteurs_livres_et_genres():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT 
+            Emprunteurs.Nom, 
+            Emprunteurs.Prénom, 
+            Livres.Titre, 
+            Genres.NomGenre
+            FROM Emprunteurs 
+            LEFT JOIN Emprunts ON Emprunteurs.EmprunteurID = Emprunts.EmprunteurID
+            LEFT JOIN Livres ON Livres.LivreID = Emprunts.LivreID
+            LEFT JOIN Genres ON Genres.GenreID = Livres.GenreID
+        """
+    )
+    resultat = cursor.fetchall()
+    conn.close()
+    print("Données emprunteurs/livres/genres récupérées avec succès.")
+    return resultat

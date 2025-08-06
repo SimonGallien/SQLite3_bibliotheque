@@ -70,3 +70,13 @@ if __name__ == "__main__":
     print("-" * 45)
     for nom, prenom, duree in dureeMoyenneEmprunt:
         print(f"{prenom:<10} | {nom:<10} | {duree}")
+
+    historiqueEmprunt = get_emprunteurs_livres_et_genres()
+    print("\n 📅 Historique des emprunts :")
+    print(
+        f"{'Prénom':<10} | {'Nom':<10} | {'Titre du livre':<32} | {'Genre du livre'}"
+    )
+    print("-" * 70)
+    for nom, prenom, titre, genre in historiqueEmprunt:
+        titre_str = f"{titre}" if titre is not None else "Aucun"
+        print(f"{prenom:<10} | {nom:<10} | {titre_str:<32} | {genre}")
