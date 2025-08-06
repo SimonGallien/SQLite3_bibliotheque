@@ -99,3 +99,10 @@ if __name__ == "__main__":
     print("\n📖 Livres jamais empruntés :")
     for livre in livresJamaisEmpruntés:
         print(f"- {livre[0]}")
+
+    nbrEmprunteursParAuteur = get_nbr_emprunteurs_par_auteur()
+    print("\n👤 Nombre d'emprunteurs par Auteur :")
+    print(f"{'Prénom':<12} | {'Nom':<12} | {'Nombre total d\'emprunteur(s)'}")
+    print("-" * 42)
+    for prenom, nom, nbrEmprunteurs in nbrEmprunteursParAuteur:
+        print(f"{prenom:<12} | {nom:<12} | {nbrEmprunteurs}")

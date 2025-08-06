@@ -24,6 +24,7 @@ Il permet d’explorer les bases de la manipulation de données relationnelles e
   - `get_top3_livre()` → retourne les trois livres les plus empruntés, avec leur titre et le nombre total d’emprunts.
   - `get_nombre_emprunts_par_emprunteur()` → retourne le nombre total de livres empruntés par chaque emprunteur, y compris ceux qui n’ont jamais emprunté de livre.
   - `get_livres_jamais_empruntes()` → retourne la liste des livres jamais empruntés
+  - `get_nbr_emprunteurs_par_auteur()` → retourne le nombre d’emprunteurs uniques pour chaque auteur, y compris ceux dont aucun livre n’a été emprunté.
 
 
 ---

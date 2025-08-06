@@ -211,3 +211,24 @@ def get_livres_jamais_empruntes():
     conn.close()
     print("Livres jamais empruntés récupérés et connexion fermée.")
     return resultat
+
+
+def get_nbr_emprunteurs_par_auteur():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT 
+            Auteurs.Prénom, 
+            Auteurs.Nom, 
+            COUNT(DISTINCT Emprunts.EmprunteurID) AS nbrEmprunteurs
+        FROM Auteurs
+        LEFT JOIN Livres ON Livres.AuteurID = Auteurs.AuteurID
+        LEFT JOIN Emprunts ON Emprunts.LivreID = Livres.LivreID
+        LEFT JOIN Emprunteurs ON Emprunteurs.EmprunteurID = Emprunts.EmprunteurID
+        GROUP BY Auteurs.AuteurID
+        """
+    )
+    resultat = cursor.fetchall()
+    conn.close()
+    print("Nombres d'emprunteurs par Auteur et connexion fermée.")
+    return resultat
