@@ -175,3 +175,23 @@ def get_top3_livre():
     conn.close()
     print("Top 3 des livres les plus empruntés récupéré et connexion fermée.")
     return resultat
+
+
+def get_nombre_emprunts_par_emprunteur():
+    conn, cursor = connexion_database()
+    cursor.execute(
+        """
+        SELECT Emprunteurs.Prénom, Emprunteurs.Nom, 
+            COUNT(Emprunts.EmprunteurID) AS nbrEmprunt
+            FROM Emprunteurs
+        LEFT JOIN Emprunts ON Emprunts.EmprunteurID = Emprunteurs.EmprunteurID
+        GROUP BY Emprunteurs.EmprunteurID
+        ORDER BY nbrEmprunt DESC
+        """
+    )
+    resultat = cursor.fetchall()
+    conn.close()
+    print(
+        "Nombre total de livres empruntés par chaque emprunteur récupéré et connexion fermée."
+    )
+    return resultat

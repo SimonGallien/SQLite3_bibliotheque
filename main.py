@@ -87,3 +87,10 @@ if __name__ == "__main__":
     print("-" * 50)
     for titre, count in top3:
         print(f"{titre:<35} | {count}")
+
+    nbrLivreParEmprunteur = get_nombre_emprunts_par_emprunteur()
+    print("\n📖 Nombre total de livres empruntés par chaque emprunteur :")
+    print(f"{'Prénom':<12} | {'Nom':<12} | {'Nombre total d\'emprunts'}")
+    print("-" * 42)
+    for prenom, nom, nbrEmprunt in nbrLivreParEmprunteur:
+        print(f"{prenom:<12} | {nom:<12} | {nbrEmprunt}")
